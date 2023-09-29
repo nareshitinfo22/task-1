@@ -1,0 +1,124 @@
+1.      ls -lrt                 list current directory
+       ls -la                  to show all files and directory including ones starting with . eg: . and .. and .ssh and .profile etc. 
+       ls -lrt /bin/usr | grep "nav$"          to search the files in 'usr' directory of ending with 'nav'
+2.      uname -a                shows the OS for Solaris
+       oslevel -r              shows the OS for AIX 
+3.      df -k                   shows the (file system)partition space
+       df -kh                  to show in GB of partition space (h options not available on all systems)
+4.      du -k | sort -n         to show tree structure directory --- (total space & Avaialable) WRONG 
+       df -k /tmp              to know the spcae available in filesystem where /tmp directory resides.
+       du -sk                  directory size
+5.      netstat -an             displays the port & local address & foreign address state 
+       netstat -an | grep 9091 to search for 9091 port
+6.      nslookup                shows IP & hostname
+7.      ps -ef | grep PID       shows the process ID by filtering
+8.      find . -name myFileName search file by name myFileName is current directory which is denoted by . 
+9.      find . -exec ls -lrt    execute the command (eg here ls -lrt) on the result of the previous command here (find . -> means all files and directories in current dir)
+       find / | grep "log$"    displays all files ends with 'log' in the whole system (need root authority) 
+       find / | grep "gayam"   displays all files which has 'gayam' in its name in the whole system. (need root authority)
+10.     ln -s lmsi2w_i2 lmsi2w  soft link  -- first file (actual physical file) is linked to second file(just a pointer like a shortcut). 
+11.     hostname                displays the name of host(machine)
+12.     touch                   changes the file time stamp or creates a new file if it does not already exist
+13.     rm -r                   recursively remove directories & files 
+14.     chmod -R                changes the permissions of the file recursively
+15.     chown -R                changes the owner(and group) of the file recursively
+16.     cd -                    changes the directory to previous directory 
+17.     cd ~  or  cd            changes the home directory of the currently logged in user
+18.     ssh - hostname          connects to that particular host as the currently logged in user
+       ssh tempuser@hostname   connects to that particular host as the user named tempuser
+19.     kill -9 <PID>           kills the particular process ID.
+20.     kill -3 <PID>           to take (java) Thread dump.
+21.     > <file name>           to pass (redirect) the output to "file name" Ex:- #banner naveen >nav 
+22.     cat /dev/null > file    to empty file
+23.     sleep x                 wait "X" amount of seconds.
+24.     &                       to run in back ground. Ex- #startnode.sh &  (to run script in backgorund)  or ^z after commnad runs 
+25.     bg                      continuous stopped job in the back ground
+26.     fg                      conti...stopped job in the foreground.
+27.     tar -cvf x.tar a b c    Create tar file x.tar consisting of files or directories a, b, c 
+28.     tar -xvf x.tar          untar (unzip) tar file x.tar in current directory
+29.     tar -tvf x.tar          just display contents of x.tar to screen without untarring it
+30.     java -version           displays the Java version (finds java from your path). if you want version of a specific java installation on you machine, go to the directory where it is installed and issue ./java -version. 
+31.     compress, uncompress    compresses file having extension -- .z
+32.     users                   I dont think there is a command like this
+33.     diff a b                prints the lines that are different 
+34.     gzip <filename>         compress the file.
+       gzip -9 <filename>      max compression but long time
+35.     gunzip <filename>       uncompress the file.
+36.     more <filename>         Displays file one page at a time. 
+37.     passwd                  allows you to change the password.
+38.     wc                      counts the no of lines (-l) words (-w) and bytes or characters (-c) for each file
+39.     who                     shows who is logged in 
+40.     uptime                  shows how long the system has been up.
+41.     finger scott            gives the full name of logged in user with username as scott
+42.     tail filename           shows the last 10 lines of the file. 
+43.     tail -f filename        -f shows the last 4 lines with process going lines means if more lines are written it will keep showing them. Control will not come back to command prompt. You have to hit Ctrl+C to get it back. Otherwise it will keep waiting there and will list out the new lines as they are being written. 
+       tail -5 filename        shows last 5 lines.
+44.     tail -50f               last 50 lines + show running text
+       head -5                 shows the first 5 of the file.
+45.     cat                     to view the entire file. 
+46.     ;                       to execute 'n' no of commands. ex:- ls -lrt ; pwd ----> list and path
+47.     crontab -l              list the crontab file which contains list of commands that you want to run on a regular schedule. 
+       crontab -e              edit the above file
+48.     ps -ef | grep <sysname> | awk '{print $2}'              to show PID only one excluding "grep PID" & show only PID no.
+49.     ps -ef | grep <sysname> | awk '{print $2}' | xargs kill -9 <pid>        2 commands at once - show & kill. 
+50.*    /usr/ucb/ps -auxww | grep java | grep -v grep   (for solaris)
+       /usr/ucb/ps -auxww | grep dmgr
+       lsof -i:60040           lists the connections of the port 60040
+
+
+51.     less <filename>         To see the contents of the file like MORE command. but is more useful than MORE. just type vi to enter vi mode. 
+52.     sudo
+53      su                      switch user to act as another user
+54.     alias nav="ls"          the alias ls given to nav,so when u enter nav it lists files.
+55.     alias                   to see all the alias names. 
+56.     unalias nav             to remove alias for nav.
+57.     .                       Present working directory
+58.     id  or whoami           displays who am i loogged in as.
+59.     $PWD/
+60      cd -                    goes to previous directory 
+61.     ssh <username>@boxname  login to another machine from current box.
+62.     ftp <HOST IP>           To login to another machine
+63.     ftp>!pwd                to show the path in the local machine 
+64.     ftp>pwd                 to show the path of remote machine.
+64.     scp                     to copy file from one box to another box
+       scp -pr root@ws02.akt.com:/apps/software/*  <target>
+       scp rthoutam@ws02.akt.com:/tmp/software.tar  .   ---> secure copy
+64.     echo $SHELL             to check the shell name (bsh,csh,ksh)
+65.     . .profile              to run profile.
+66.     export PS1='#'          to change the prompt 
+67      grep -i ravi *          to find lines in all files in current dir which contain string "ravi"
+       find / -name <f.n>      to find a file with its name in the dir / i.e in the whole system 
+       find / | grep *.tar   or "tar$"
+       history | grep grep
+       shell
+       export PS1='nav'        to change prompt to 'nav'
+       env                     show the environment variables 
+       echo $PATH
+       cd ../../bin            to go to 2 directories back and entering into "bin" in that
+       ifconfig -a             to check the IP address of this host
+sun     uname -a                to see O/S & version. 
+Aix     oslevel -r              to see the version of Aix
+       groups                  to check the group of your user.
+       groups wasadmin         to show the group of the user called wasadmin
+       top                     see the processor usage for top cpu consuming processes 
+       umask                   file mode creation mask - display it to screen
+       telnet <H.N> or user@<H.N>
+       SSH <H.N>  or user@<H.N>
+       nslookup www.yahoo.com
+       mkdir -p /tmp1/tmp2/tmp3        this creates dir tmp1 and dir tmp2 inside it and dir tmp3 inside it.
+       which cd                displays which dir "cd" command is found in - in your PATH 
+       which grep              displays which dir "grep" command is found in - in your PATH
+       which ps                displays which dir "ps" command is found in - in your PATH
+       env                     shows the environment variables 
+       ls -lrt /usr/bin | grep "ps$"   shows the files which ends with "ps"
+       groupadd <wasadmin>
+       useradd -g wasadmin -d /home/wasadmin -s /bin/bash -c
+       usermod wasadmin ngayam         to add existing user "ngayam" to "wasadmin" group 
+       last                    To show the users logged in
+       prtconf                 Solaris system conf
+       lsof -i:port            See what process is listening on this port.
+       echo $?                 to check exit status of previous commnad ****** 0 for success, 1 for failure, 2 for other or incomplete 
+       pkginfo                 to view all installed packages (softwares)
+       pkgadd                  to add / install packages
+       pkgrm                   to remove /uninstall packages
+
